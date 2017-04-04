@@ -28,7 +28,7 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('email', 'email id ', 'trim|required');
         $this->form_validation->set_rules('password', 'password', 'trim|required');
         if ($this->form_validation->run() == FALSE):
-            $this->load->view('signin_form');
+            $this->load->view('login');
         else :
             $email     = $this->input->post('email');
             $password  = md5($this->input->post('password'));
@@ -40,7 +40,7 @@ class Users extends CI_Controller
                 redirect(site_url('users/profile'));
             else :
                 $this->session->set_flashdata('error', 'Invalid username or password.');
-                $this->load->view('signin_form');
+                $this->load->view('login');
             endif;
         endif;
     }
@@ -56,7 +56,7 @@ class Users extends CI_Controller
         $this->form_validation->set_message('is_unique', 'The %s is already taken');
 
         if ($this->form_validation->run() == FALSE):
-            $this->load->view('signin_form');
+            $this->load->view('signup');
         else :
             $data = array(
                 'name'=>$this->input->post('username'),

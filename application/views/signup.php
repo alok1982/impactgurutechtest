@@ -31,28 +31,10 @@
               <?php } ?>
             <!-- Error Message -->
                 <div class="col-md-1"></div>
-                <div class="col-md-5">
-                <div class="modal-header">
-                  <h4 class="modal-title"><i class="icon-paragraph-justify2"></i>Login Form </h4>
-                </div>                  
-                  <form method="post" action="<?php echo site_url('users/login') ?>">
-                      <h5>Email</h5>
-                      <input type="text" placeholder="Enter your email id" name="email" value="<?php echo set_value('email'); ?>" class="form-control" size="50" />
-                      <div class="errorMessage"><?php echo form_error('email'); ?></div>
-                      <h5>Password</h5>
-                      <input type="password" placeholder="Enter your password" name="password" value="<?php echo set_value('password'); ?>" class="form-control" size="50" />
-                      <div class="errorMessage"><?php echo form_error('password'); ?></div>                          
-                      <div><br> 
-                      <input type="submit" class="btn btn-primary" value="Submit" />
-
-                      <h5>Try demo email : <b>karthick@mostlikers.com</b> password : <b>mostlikers</b></h5>
-                      </div>
-                  </form>
-                </div>
                 <div class="col-md-1"></div>                
                 <div class="col-md-5">
                 <div class="modal-header">
-                  <h4 class="modal-title"><i class="icon-paragraph-justify2"></i>New user registration Form </h4>
+                  <h4 class="modal-title"><i class="icon-paragraph-justify2"></i>New User Registration Form</h4>
                 </div>
                     <form method="post" action="<?php echo site_url('users/signup') ?>">
                         <h5>Name</h5>
@@ -72,7 +54,8 @@
                         </div>
                     </form>
                 </div>
-             </div><hr>
+             </div>
+             <br>
               
            </div>
             <div class="col-sm-2">

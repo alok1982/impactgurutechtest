@@ -9,6 +9,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Guest extends CI_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->model('users_model','users');
+    }
     public function index()
     {
         //echo "Welcome to guest controller";
