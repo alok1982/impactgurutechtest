@@ -1,86 +1,130 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  <head> <title>CodeIgniter Tutorial - Demo Mostlikers</title>  
-  <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  </head> 
-    <body>
-    <div class="container-fluid">
-     <div class="page_content bg_data">             
-        <div class="row">         
-         <div class="col-md-10 middle-col">
-            
-             <div class="row">
-             <!-- Success Message -->
-              <?php if($this->session->flashdata('message')){?>
-                  <div class="alert alert-success fade in block-inner">            
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <i class="icon-checkmark-circle"></i> <?php echo $this->session->flashdata('message')?>
-                  </div>
-              <?php } ?>
-            <!-- /Success Message -->
-            <!-- Error Message -->
-              <?php if($this->session->flashdata('error')){?>
-                <div class="alert alert-danger fade in block-inner">
-                  <button type="button" class="close" data-dismiss="alert">×</button>
-                  <i class="icon-checkmark-circle"></i> <?php echo $this->session->flashdata('error')?> 
-                </div>
-              <?php } ?>
-            <!-- Error Message -->
-                <div class="col-md-1"></div>
-                <div class="col-md-1"></div>                
-                <div class="col-md-5">
-                <div class="modal-header">
-                  <h4 class="modal-title"><i class="icon-paragraph-justify2"></i>New User Registration Form</h4>
-                </div>
-                    <form method="post" action="<?php echo site_url('users/signup') ?>">
-                        <h5>Name</h5>
-                        <input type="text" name="username" placeholder="Enter your name" value="<?php echo set_value('username'); ?>" class="form-control" size="50" />
-                        <div class="errorMessage"><?php echo form_error('username'); ?></div>
-                        <h5>Email Address</h5>
-                        <input type="text"  name="user_email" placeholder="Enter your email" value="<?php echo set_value('user_email'); ?>" class="form-control" size="50" />
-                        <div class="errorMessage"><?php echo form_error('user_email'); ?></div>
-                        <h5>Password</h5>
-                        <input type="password" name="new_password" placeholder="Enter your new password" value="<?php echo set_value('new_password'); ?>" class="form-control" size="50" />
-                        <div class="errorMessage"><?php echo form_error('new_password'); ?></div>
-                        <h5>Password Confirm</h5>
-                        <input type="password" name="passconf" placeholder="Enter your password" value="<?php echo set_value('passconf'); ?>" class="form-control" size="50" />
-                        <div class="errorMessage"><?php echo form_error('passconf'); ?></div>
-                        <div><br>
-                        <input type="submit" class="btn btn-primary" value="Submit" />
-                        </div>
-                    </form>
-                </div>
-             </div>
-             <br>
-              
-           </div>
-            <div class="col-sm-2">
-                          
-            </div>
+<!DOCTYPE html>
+<html lang="en">
 
-         </div>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Game Station</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo base_url(VENDOR); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<?php echo base_url(VENDOR); ?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="<?php echo base_url(CSS); ?>/agency.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.<?php echo base_url(JS); ?>/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+<!-- Navigation -->
+<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top affix">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Game Station</a>
         </div>
-         <!-- this for full width layout -->    
-     </div>  
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#login">Login</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#signup">Sign Up</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#games">Games</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-       
-  </body>
+    <!-- /.container-fluid -->
+</nav>
+
+<section id="signup">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="modal-header">
+                    <h4 class="modal-title"><i class="icon-paragraph-justify2"></i>New User Registration Form</h4>
+                </div>
+                <form method="post" action="<?php echo site_url('users/signup') ?>">
+                    <h5>Name</h5>
+                    <input type="text" name="username" placeholder="Enter your name" value="<?php echo set_value('username'); ?>" class="form-control" size="50" />
+                    <div class="errorMessage"><?php echo form_error('username'); ?></div>
+                    <h5>Email Address</h5>
+                    <input type="text"  name="user_email" placeholder="Enter your email" value="<?php echo set_value('user_email'); ?>" class="form-control" size="50" />
+                    <div class="errorMessage"><?php echo form_error('user_email'); ?></div>
+                    <h5>Password</h5>
+                    <input type="password" name="new_password" placeholder="Enter your new password" value="<?php echo set_value('new_password'); ?>" class="form-control" size="50" />
+                    <div class="errorMessage"><?php echo form_error('new_password'); ?></div>
+                    <h5>Confirm Password</h5>
+                    <input type="password" name="passconf" placeholder="Enter your password" value="<?php echo set_value('passconf'); ?>" class="form-control" size="50" />
+                    <div class="errorMessage"><?php echo form_error('passconf'); ?></div>
+                    <div><br>
+                        <input type="submit" class="btn btn-primary" value="Submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy;</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="<?php echo base_url(VENDOR); ?>/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="<?php echo base_url(VENDOR); ?>/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="<?php echo base_url(JS); ?>/jqBootstrapValidation.js"></script>
+<script src="<?php echo base_url(JS); ?>/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="<?php echo base_url(JS); ?>/agency.min.js"></script>
+
+</body>
+
 </html>
-<style type="text/css">
-  body{background: #f7f7f7;}
-.errorMessage { color:red;}
-.bg_data {
-      background: url(https://lh5.googleusercontent.com/-PxxJg0cfLSc/UY3T62lCUVI/AAAAAAAAAo4/jZoTISc15Bw/w27-h15-no/img08.png);
-    margin: auto;  
-}
-
-
-.example_responsive_1 {width: 650px; height: 300px; }
-@media(min-width: 500px) { .example_responsive_1 { width: 650px; height: 300px; } }
-@media(min-width: 800px) { .example_responsive_1 { width: 650px; height: 300px; } }
-
-</style>
